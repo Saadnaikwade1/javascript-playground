@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>keybevent</title>
+    <style>
+      .con {
+        width: 300px;
+        height: 400px;
+        background-color: brown;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="con"
+      oncontextmenu="fun3(event)"
+      onmouseover="fun4(event)"
+      onmouseout="fun5(event)"
+    >
+      <button onclick="fun1()" ondblclick="fun2()">Click</button>
+    </div>
+<div>color:brown
+    onclick:blue 
+    ondblclick:yellow 
+    onhover:orange 
+    hover out:brown
+</div>
+    <script>
+      let dr=document.querySelector(".con")
+
+      let fun1=()=>{
+          dr.style.backgroundColor="blue"
+      }
+      let fun2=()=>{
+          dr.style.backgroundColor="yellow"
+      }
+      let fun3=(e)=>{
+          e.preventDefault()
+      }
+       let fun4=(e)=>{
+          dr.style.backgroundColor="orange"
+      } 
+      let fun5=(e)=>{
+          dr.style.backgroundColor="brown"
+      }
+    </script>
+  </body>
+</html>

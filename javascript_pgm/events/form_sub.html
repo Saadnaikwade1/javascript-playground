@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form submiton</title>
+</head>
+<body>
+    <form action="https://www.google.com" onsubmit="fun2(event)" onreset="fun3(event)">
+        <input type="text">
+        <select  onchange="func1(this)">
+            <option value="" disabled selected>-- select --</option>
+            <option value="1">ds</option>
+            <option value="2">ai</option>
+            <option value="3">cse</option>
+            <option value="4">it</option>
+        </select>
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+        <h1></h1>
+
+    </form>
+
+    <script>
+
+        function func1(e){
+            document.querySelector("h1").innerHTML="You selected:"+e.value
+        }
+        function fun2(e){
+            let f=confirm("Can I submit?")
+            if(!f){
+                e.preventDefault()
+            }
+        }
+        function fun3(e){
+            let f=confirm("Are you want to reset ?")
+            if(!f){
+                e.preventDefault()
+            }
+        }
+    </script>
+</body>
+</html>

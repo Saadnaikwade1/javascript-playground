@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>append child</title>
+  </head>
+  <body>
+    <div class="con">
+      <h1>Heading</h1>
+      <input type="text" />
+      <input type="text" />
+    </div>
+    <button onclick="fun()">AddNewField</button>
+
+    <script>
+      let dr = document.getElementsByTagName("div")[0];
+      let h1r = document.getElementsByTagName("h1")[0];
+      let ar = document.createElement("a");
+      ar.href = "https://www.google.com";
+      ar.innerHTML = "click me";
+      dr.replaceChild(ar, h1r);
+      let fun = () => {
+        let pr = document.createElement("p");
+        let ipr = document.createElement("input");
+        ipr.type = "text";
+        let btnr = document.createElement("button");
+        btnr.innerHTML = "delete";
+        btnr.addEventListener("click", () => del(pr));
+        pr.appendChild(ipr);
+        pr.appendChild(btnr);
+        dr.appendChild(pr);
+      };
+      function del(pr) {
+        dr.removeChild(pr);
+      }
+    </script>
+  </body>
+</html>

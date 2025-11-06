@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MouseEvent</title>
+    <style>
+      .con {
+        width: 200px;
+        height: 200px;
+        background-color: aquamarine;
+        position: relative;
+      }
+      .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="con"
+      onmousemove="fun1(event)"
+      onclick="fun2(event)"
+      onmouseenter="fun3(this)"
+      onmouseleave="fun4(this)"
+      oncontextmenu="fun5(event)"
+    >
+      <div class="circle"></div>
+    </div>
+    <h1></h1>
+    <p></p>
+    <input type="text" onkeyup="fun6(this)" onfocus="fun7(this)" onblur="fun8(this)">
+
+    <script>
+      let fun1 = (e) => {
+        document.querySelector("h1").innerHTML =
+          "mouse pointer:" + e.offsetX + "," + e.offsetY;
+      };
+
+      let fun2 = (e) => {
+        let cr = document.querySelector(".circle");
+        cr.style.top = e.offsetY - 25 + "px";
+        cr.style.left = e.offsetX - 25 + "px";
+      };
+      let fun3 = () => {
+        document.querySelector("p").innerHTML = "You clicked the box";
+      };
+      let fun4 = () => {
+        document.querySelector("p").innerHTML = "You exited the box";
+      };
+      let fun5 = (e) => {
+        e.preventDefault();
+        if (!document.querySelector(".msg")) {
+          let p = document.createElement("p");
+          p.className = "msg";
+          p.innerHTML = "IN CONTAINER YOU ARE NOT ALLOWED TO OPEN TEXT MENU!";
+          p.style.color = "red";
+          document.body.appendChild(p);
+          setTimeout(() => {
+            p.remove();
+          }, 3000);
+        }
+      };
+
+      let fun6=(e)=>{
+        setTimeout(()=>{
+   e.value =e.value.toUpperCase()
+        },2000)
+     
+
+      }
+
+      let fun7=(e)=>{
+        e.style.backgroundColor="yellow"
+      }
+      let fun8=(e)=>{
+        e.style.backgroundColor="white"
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO Task</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      input {
+        padding: 10px 15px;
+        width: 250px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+      }
+
+      button {
+        margin-left: 8px;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 8px;
+        background: #00c6ff;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background: #0072ff;
+        transform: scale(1.05);
+      }
+
+      ul {
+        margin-top: 25px;
+        width: 300px;
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 12px 15px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s ease;
+      }
+
+      li:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      li span {
+        flex: 1;
+      }
+
+      li button {
+        margin-left: 8px;
+        font-size: 14px;
+        padding: 6px 10px;
+        background: #ff6a00;
+      }
+
+      li button:nth-child(2) {
+        background: #f44336;
+      }
+
+      li button:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>✨ My To-Do List ✨</h1>
+    <div>
+      <input type="text" placeholder="Add a new task..." />
+      <button>Add</button>
+    </div>
+    <ul></ul>
+
+    <script>
+      let ipr = document.querySelector("input");
+      let btnr = document.querySelector("button");
+      let ulr = document.querySelector("ul");
+      btnr.addEventListener("click", add);
+      let sr;
+
+      function add() {
+        if (ipr.value.trim() === "") return alert("Write something first 😅");
+        let lir = document.createElement("li");
+        let spr = document.createElement("span");
+        let editbtn = document.createElement("button");
+        let delbtn = document.createElement("button");
+
+        spr.innerHTML = ipr.value;
+        editbtn.innerHTML = "✏️ Edit";
+        editbtn.addEventListener("click", () => edit(spr));
+        delbtn.innerHTML = "🗑️ Delete";
+        delbtn.addEventListener("click", () => del(lir));
+
+        lir.appendChild(spr);
+        lir.appendChild(editbtn);
+        lir.appendChild(delbtn);
+        ulr.appendChild(lir);
+        ipr.value = "";
+      }
+
+      function del(lir) {
+        ulr.removeChild(lir);
+      }
+
+      function edit(spr) {
+        ipr.value = spr.innerHTML;
+        btnr.removeEventListener("click", add);
+        btnr.innerHTML = "Update";
+        btnr.addEventListener("click", upd);
+        sr = spr;
+      }
+
+      function upd() {
+        sr.innerHTML = ipr.value;
+        btnr.removeEventListener("click", upd);
+        btnr.innerHTML = "Add";
+        btnr.addEventListener("click", add);
+        ipr.value = "";
+      }
+    </script>
+  </body>
+</html>

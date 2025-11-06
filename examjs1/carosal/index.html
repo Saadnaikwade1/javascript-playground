@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>carosal</title>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+      .con {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+      }
+      .con img {
+        width: 100%;
+        height: 100%;
+      }
+      .card-con {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid white;
+        color: white;
+        padding: 20px;
+      }
+      .fa-greater-than,
+      .fa-less-than {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: white;
+        color: black;
+        padding: 10px;
+      }
+      .fa-greater-than {
+        right: 10px;
+      }
+      .fa-less-than {
+        left: 10px;
+      }
+      .dot-con {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px;
+        bottom: 10px;
+      }
+      .dot-con .fa-circle {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      <img src="img1.jpeg" alt="" />
+      <i class="fa-solid fa-greater-than" onclick="fwd()"></i>
+      <i class="fa-solid fa-less-than" onclick="bkd()"></i>
+      <div class="dot-con">
+        <i class="fa-solid fa-circle" onclick="setI(0)"></i>
+        <i class="fa-regular fa-circle" onclick="setI(1)"></i>
+        <i class="fa-regular fa-circle" onclick="setI(2)"></i>
+        <i class="fa-regular fa-circle" onclick="setI(3)"></i>
+      </div>
+      <div class="card-con">
+        <h1>heading-1</h1>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae,
+          deserunt?
+        </p>
+        <button>know more</button>
+      </div>
+    </div>
+  
+    <script src="car.js"></script>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>From validation</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #f3f6fa;
+        display: flex;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      form {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 420px;
+        transition: all 0.3s ease;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .inp-con {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+        position: relative;
+      }
+
+      label {
+        flex: 1;
+        font-weight: 500;
+        color: #444;
+      }
+
+      input {
+        flex: 2;
+        height: 38px;
+        padding: 0 10px;
+        border: 1.5px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        font-size: 15px;
+        transition: all 0.3s ease;
+      }
+
+      input:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+      }
+
+      img {
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        right: 10px;
+        display: none;
+      }
+
+      img.valid {
+        display: inline;
+        filter: hue-rotate(100deg);
+      }
+
+      img.invalid {
+        display: inline;
+        filter: hue-rotate(0deg);
+      }
+
+      /* Password conditions */
+      .pwdcnst {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 15px 20px;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+        border-left: 4px solid #007bff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .pwdcnst p {
+        margin: 5px 0;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .pwdcnst p::before {
+        content: "•";
+        position: absolute;
+        left: 5px;
+        color: #007bff;
+      }
+
+      /* Validation feedback colors */
+      input.valid {
+        border-color: #28a745;
+        background: #e8f9ee;
+      }
+
+      input.invalid {
+        border-color: #dc3545;
+        background: #ffe8e8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="inp-con">
+      <label for="uid">UserID:</label>
+      <input type="text" placeholder="Enter UID" onblur="fun1(this)" />
+      <img src="right mark.png" style="display: none" />
+      <img src="wrong mark.png" style="display: none" />
+    </div>
+    <div class="inp-con">
+      <label for="Name">Name:</label>
+      <input type="text" placeholder="Enter Name" onblur="fun2(this)" />
+      <img src="right mark.png" style="display: none" />
+      <img src="wrong mark.png" style="display: none" />
+    </div>
+    <div class="inp-con">
+      <label for="Phno">PhNO:</label>
+      <input type="text" placeholder="Enter Phno" onblur="fun3(this)" />
+      <img src="right mark.png" style="display: none" />
+      <img src="wrong mark.png" style="display: none" />
+    </div>
+    <div class="inp-con">
+      <label for="Email">E-mail:</label>
+      <input type="text" placeholder="Enter Email" onblur="fun4(this)" />
+      <img src="right mark.png" style="display: none" />
+      <img src="wrong mark.png" style="display: none" />
+    </div>
+    <div class="inp-con">
+      <label for="Password">Password</label>
+      <input type="text" placeholder="Enter Password" onblur="valpwd(this)" />
+      <img src="right mark.png" style="display: none" />
+      <img src="wrong mark.png" style="display: none" />
+    </div>
+
+    <div class="pwdcnst">
+      <p>Starts with A-Z</p>
+      <p>Contains one lower case letter</p>
+      <p>one digit</p>
+      <p>one symbol from @$^#!</p>
+      <p>space not allowed</p>
+      <p>length>=6</p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

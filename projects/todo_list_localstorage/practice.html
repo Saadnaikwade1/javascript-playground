@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="uid" placeholder="Enter uid" />
+    <input type="text" name="title" placeholder="Enter title" />
+    <textarea></textarea>
+    <input type="date" name="dl" />
+    <button onclick="add()">add</button>
+    <button onclick="upd()" style="display: none">update</button>
+
+    <table></table>
+    <table></table>
+
+    <script>
+      let ipr = document.querySelectorAll("input");
+      let textr = document.querySelector("textarea");
+      let btnr = document.querySelectorAll("button");
+      let tblr = document.querySelectorAll("table");
+
+      let add = () => {
+        let obj = {};
+        for (let i = 0; i < ipr.length; i++) {
+          obj[ipr[i].name] = ipr[i].value;
+        }
+        obj.desc = textr.value;
+
+        let arr = localStorage.getItem("task");
+        if (arr) {
+          arr = JSON.parse(arr);
+        } else {
+           arr = [];
+        }
+        arr.push(obj);
+        localStorage.setItem("task", JSON.stringify(arr));
+        ipr[0].value = "";
+        ipr[1].value = "";
+        ipr[2].value = "";
+        textr.value = "";
+         disp();
+      };
+      let disp = () => {
+        let s =
+          "<tr ><th colspan='8'>Pending Tasks</th></tr> <tr><th>S.NO</th> <th>UID</th> <th>Title</th> <th>Disc</th> <th>Dedline</th> <th></th> <th></th> <th></th> </tr>";
+        let arr = localStorage.getItem("task");
+        if (arr) {
+          arr = JSON.parse(arr);
+          if (arr.length != 0) {
+            for (let i = 0; i < arr.length; i++) {
+              s =
+                s +
+                `<tr>
+                      <td>${i + 1}</td>
+                      <td>${arr[i].uid}</td>
+                      <td>${arr[i].title}</td>
+                      <td>${arr[i].desc}</td>
+                      <td>${arr[i].dl}</td>
+                      <td><button onclick="edit(${i})">Edit</button></td>
+                      <td><button onclick="del(${i})">Delete</button></td>
+                      <td><button onclick="cmp(${i})">Completed</button></td>
+                      </tr>`;
+            }
+            tblr[0].innerHTML = s;
+            tblr[0].border = "2";
+          } else {
+            tblr[0].innerHTML = "";
+            tblr[0].border = "0";
+          }
+        } else {
+          tblr[0].innerHTML = "";
+          tblr[0].border = "0";
+        }
+     };
+      function edit(ind) {
+        let arr = JSON.parse(localStorage.getItem("task"));
+
+        ipr[0].value = arr[ind].uid;
+        ipr[1].value = arr[ind].title;
+        ipr[2].value = arr[ind].dl;
+        textr.value = arr[ind].desc;
+        btnr[0].style.display = "none";
+        btnr[1].style.display = "inline-block";
+        eind = ind;
+      }
+      function upd() {
+        let arr = JSON.parse(localStorage.getItem("task"));
+        let obj = {};
+        for (let i = 0; i < ipr.length; i++) {
+          obj[ipr[i].name] = ipr[i].value;
+        }
+        obj.desc = textr.value;
+        arr[eind] = obj;
+        localStorage.setItem("task", JSON.stringify(arr));
+        disp();
+        ipr[0].value = "";
+        ipr[1].value = "";
+        ipr[2].value = "";
+        textr.value = "";
+        btnr[0].style.display = "inline-block";
+        btnr[1].style.display = "none";
+      }
+
+      function del(ind) {
+        let arr = JSON.parse(localStorage.getItem("task"));
+        arr.splice(ind, 1);
+        localStorage.setItem("task", JSON.stringify(arr));
+        disp();
+      }
+      function cmp(ind){
+         let btn=document.querySelectorAll("table tr td button")
+
+        
+      }
+      disp()
+    </script>
+  </body>
+</html>

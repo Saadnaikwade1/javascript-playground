@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form events</title>
+  </head>
+  <body>
+    <input type="text" onfocus="fun1(this)" onblur="fun2(this)" />
+    <script>
+
+        let fun1=(e)=>{
+               console.log(e);
+            e.style.background="blue"
+         
+        }
+        let fun2=(e)=>{
+            e.style.backgroundColor="white"
+        }
+    </script>
+  </body>
+</html>

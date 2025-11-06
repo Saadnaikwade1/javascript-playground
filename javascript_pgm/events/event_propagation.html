@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event propagation</title>
+
+    <style>
+        .btn1{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background-color: rgb(69, 16, 100);
+        }
+        .btn2{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            background-color: rgb(109, 72, 23);
+            top: 25px;
+            left: 25px;
+
+        }
+        .btn3{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: rgb(15, 120, 64);
+            top: 25px;
+            left: 25px;
+
+        }
+        .btn4{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: rgb(72, 47, 182);
+            top: 25px;
+            left: 25px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="btn1">
+        <div class="btn2">
+            <div class="btn3">
+                <div class="btn4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let dr=document.querySelectorAll("div")
+        dr[0].addEventListener("click",()=>fun1(event))
+        dr[1].addEventListener("click",()=>fun2(event))
+        dr[2].addEventListener("click",()=>fun3(event))
+        dr[3].addEventListener("click",()=>fun4(event))
+
+
+        function fun1(e){
+            console.log("fun1 ext")
+            e.stopPropagation()
+        }
+        function fun2(e){
+            console.log("fun2 ext")
+            e.stopPropagation()
+        }
+        function fun3(e){
+            console.log("fun3 ext")
+            e.stopPropagation()
+        }
+        function fun4(e){
+            console.log("fun4 ext")
+            e.stopPropagation()
+        }
+    </script>
+</body>
+</html>

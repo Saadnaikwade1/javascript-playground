@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://www.google.com" target="_blank" onsubmit="fun2(event)" onreset="fun3(event)">
+        <input type="text" >
+        <select onchange="fun1(this)">
+            <option value="" disabled selected>--select--</option>
+            <option value="1">Data Science</option>
+            <option value="2">Computer Science</option>
+            <option value="3">Artificial Intelligence</option>
+            <option value="4">Machine Learning</option>
+        </select>
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+        <h1></h1>
+    </form>
+    <script>
+        let fun1=(e)=>{
+            document.querySelector("h1").innerHTML="YOU SELECTED:"+e.value
+        }
+        let fun2=(e)=>{
+            let f=confirm("CAN I CONFIRM ? ")
+            if(!f){
+                e.preventDefault()
+            }
+        }
+        let fun3=(e)=>{
+            let f=confirm("CAN I RESET ? ")
+            if(!f){
+                e.preventDefault()
+            }
+        }
+    </script>
+</body>
+</html>
